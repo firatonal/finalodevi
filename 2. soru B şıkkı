@@ -1,0 +1,23 @@
+p_c1 = 9/14
+p_c2 = 5/14
+p_age_c1 = 2/9
+p_age_c2 = 3/5
+p_income_c1 = 4/9
+p_income_c2 = 2/5
+p_student_c1 = 6/9
+p_student_c2 = 1/5
+p_credit_rating_c1 = 6/9
+p_credit_rating_c2 = 2/5
+
+
+p_x_c1 = p_age_c1 * p_income_c1 * p_student_c1 * p_credit_rating_c1
+p_x_c2 = p_age_c2 * p_income_c2 * p_student_c2 * p_credit_rating_c2
+
+p_x = p_x_c1 * p_c1 + p_x_c2 * p_c2
+p_c1_x = (p_x_c1 * p_c1) / p_x
+p_c2_x = (p_x_c2 * p_c2) / p_x
+
+if p_c1_x > p_c2_x:
+    print("Kişi bilgisayar alır. Olasılık: {:.3f}".format(p_c1_x))
+else:
+    print("Kişi bilgisayar almaz. Olasılık: {:.3f}".format(p_c2_x))
