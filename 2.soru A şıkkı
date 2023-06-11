@@ -1,0 +1,13 @@
+import pandas as pd
+
+data = {
+    'Age': ['genç', 'genç', 'orta yaşlı', 'yaşlı', 'yaşlı', 'yaşlı', 'orta yaşlı', 'genç', 'genç', 'yaşlı', 'genç', 'orta yaşlı', 'orta yaşlı', 'yaşlı'],
+    'Income': ['high', 'high', 'high', 'medium', 'low', 'low', 'low', 'medium', 'low', 'medium', 'medium', 'medium', 'high', 'medium'],
+    'Student': ['no', 'no', 'no', 'no', 'yes', 'yes', 'yes', 'no', 'yes', 'yes', 'yes', 'no', 'yes', 'no'],
+    'Credit_Rating': ['fair','excellent','fair','fair','fair','excellent','excellent','fair','fair','fair','excellent','excellent', 'fair', 'excellent'],
+    'Computer': ['no', 'no', 'yes', 'yes', 'yes', 'no', 'yes', 'no', 'yes', 'yes', 'yes', 'yes', 'yes', 'no']
+}
+
+df = pd.DataFrame(data)
+df_string = df.to_string(index=False)  
+print(df_string)
