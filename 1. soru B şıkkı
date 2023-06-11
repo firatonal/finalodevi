@@ -1,0 +1,35 @@
+import pandas as pd
+
+data = {
+    'Personel': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
+    'Maaş': ['normal', 'yüksek', 'düşük', 'yüksek', 'düşük', 'yüksek', 'düşük', 'yüksek', 'düşük', 'yüksek', 'düşük'],
+    'Deneyim': ['orta', 'yok', 'yok', 'orta', 'orta', 'iyi', 'iyi', 'orta', 'orta', 'iyi', 'iyi'],
+    'Görev': ['uzman', 'uzman', 'yönetici', 'yönetici', 'yönetici', 'yönetici', 'yönetici', 'uzman', 'uzman', 'uzman', 'uzman'],
+    'Memnuniyet': ['evet', 'evet', 'evet', 'evet', 'evet', 'evet', 'evet', 'hayır', 'hayır', 'hayır', 'hayır']
+}
+
+df = pd.DataFrame(data)
+
+adimlar = [1, 2, 3, 4, 5, 6, 7, 8]
+sol_kosullar = ['Maaş=="normal"', 'Maaş=="yüksek"', 'Maaş=="düşük"', 'Deneyim=="yok"', 'Deneyim=="orta"', 'Deneyim=="iyi"', 'Görev=="uzman"', 'Görev=="yönetici"']
+sag_kosullar = ['Maaşin["düşük","yüksek"]','Maaşin["düşük","normal"]','Maaşin["normal","yüksek"]','Deneyimin["orta","iyi"]','Deneyimin ["yok","iyi"]','Deneyimin["yok","orta"]','Görev=="yönetici"', 'Görev=="uzman"']
+
+sol_tarafta_ornekler = []
+sag_tarafta_ornekler = []
+
+for adim in adimlar:
+    sol_kosul = sol_kosullar[adim-1]
+    sag_kosul = sag_kosullar[adim-1]
+    
+    sol_ornek_sayisi = df.query(sol_kosul).shape[0]
+    sag_ornek_sayisi = df.query(sag_kosul).shape[0]
+    
+    sol_tarafta_ornekler.append(sol_ornek_sayisi)
+    sag_tarafta_ornekler.append(sag_ornek_sayisi)
+
+sonuclar = pd.DataFrame({
+    'Sol Tarafta Örnek': sol_tarafta_ornekler,
+    'Sağ Tarafta Örnek': sag_tarafta_ornekler
+}, index=adimlar)
+
+print(sonuclar)
