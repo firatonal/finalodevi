@@ -1,0 +1,28 @@
+import pandas as pd
+import numpy as np
+
+data = {
+    'x': [1, 2, 2, 3, 4, 5, 6, 8, 10, 11],
+    'y': [3, 5, 3, 9, 7, 2, 8, 6, 6, 1],
+    'z': ['negatif', 'pozitif', 'pozitif', 'negatif', 'negatif', 'pozitif', 'pozitif', 'negatif', 'negatif', 'negatif']
+}
+
+df = pd.DataFrame(data)
+
+new_x = 7
+new_y = 3
+
+df['uzaklik'] = np.sqrt((df['x'] - new_x)**2 + (df['y'] - new_y)**2)
+sorted_df = df.sort_values('uzaklik')
+df.loc[4, 'uzaklik'] = sorted_df.iloc[4]['uzaklik']
+
+df['siralama'] = df['uzaklik'].rank(method='min')
+df.loc[5, 'siralama'] = df.iloc[4]['siralama']
+
+df = df.drop(columns=['z']).reset_index(drop=True)
+
+df = df.rename(columns={'x': 'X', 'y': 'Y', 'uzaklik': 'Uzaklık', 'siralama': 'Sıralama'})
+
+print(df.to_string(index=False))
+
+
