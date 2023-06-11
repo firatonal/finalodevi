@@ -1,0 +1,5 @@
+max_suitability = df['Uygunluk'].max()
+max_suitability_index = df['Uygunluk'].idxmax()
+best_split = df['Bölünme'].iloc[max_suitability_index]
+
+print("En yüksek uygunluk değerine sahip bölünme: ", best_split)
