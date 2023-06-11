@@ -1,0 +1,14 @@
+
+import pandas as pd
+
+data = {'Personel': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
+        'Maaş': ['normal', 'yüksek', 'düşük', 'yüksek', 'düşük', 'yüksek', 'düşük', 'yüksek', 'düşük', 'yüksek', 'düşük'],
+        'Deneyim': ['orta', 'yok', 'yok', 'orta', 'orta', 'iyi', 'iyi', 'orta', 'orta', 'iyi', 'iyi'],
+        'Görev': ['uzman', 'uzman', 'yönetici', 'yönetici', 'yönetici', 'yönetici', 'yönetici','uzman','uzman','uzman','uzman'],
+        'Memnuniyet': ['evet', 'evet', 'evet', 'evet', 'evet', 'evet', 'evet', 'hayır', 'hayır', 'hayır', 'hayır']}
+
+df = pd.DataFrame(data)
+
+df = df.reset_index(drop=True) 
+
+print(df.to_string(index=False))
