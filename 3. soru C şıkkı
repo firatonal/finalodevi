@@ -1,0 +1,26 @@
+import pandas as pd
+import numpy as np
+
+data = {
+    'x': [1, 2, 2, 3, 4, 5, 6, 8, 10, 11],
+    'y': [3, 5, 3, 9, 7, 2, 8, 6, 6, 1],
+    'z': ['negatif', 'pozitif', 'pozitif', 'negatif', 'negatif', 'pozitif', 'pozitif', 'negatif', 'negatif', 'negatif']
+}
+
+df = pd.DataFrame(data)
+
+new_x = 7
+new_y = 3
+
+df['uzaklik'] = np.sqrt((df['x'] - new_x)**2 + (df['y'] - new_y)**2)
+df = df.sort_values('uzaklik')
+
+en_yakin_komsular = df.head(3)
+siniflar = en_yakin_komsular['z'].tolist()
+
+if siniflar.count('negatif') > siniflar.count('pozitif'):
+    yeni_ornek_sinif = 'negatif'
+else:
+    yeni_ornek_sinif = 'pozitif'
+
+print("Yeni örneğin sınıfı:", yeni_ornek_sinif)
